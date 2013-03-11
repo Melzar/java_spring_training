@@ -12,6 +12,8 @@
 
 	<context:component-scan base-package="org.raven.ui.controller" />
 	<mvc:annotation-driven />
+	
+	<mvc:resources mapping="/resources/**" location="/resources/" />
 
 	<!-- <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer"> 
 		<property name="templateLoaderPath" value="/view/"/> </bean> -->
