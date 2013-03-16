@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:substituteby="ScriptsAndStyles :: [//head]">
+</head>
+<body>
+	<div>
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<div th:include="NavigationBar"></div>
+			</div>
+		</div>
+		<div class="row-fluid">
+			<div class="offset3 span3">
+				<div class="bs-docs-example">
+					<div class="control-group control-row">
+						<legend>Logowanie</legend>
+						<div class="controls">
+							<input type="text" class="input-large" placeholder="Login" />
+						</div>
+						<div class="controls">
+							<input type="text" class="input-large" placeholder="Password" />
+						</div>
+						<div class="controls">
+							<a href="#">Przypomnij hasło</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="span3">
+				<div class="bs-docs-example">
+					<div class="control-group controls-row">
+						<legend>Rejestracja</legend>
+						<blockquote>Jeżeli jeszcze nie posiadasz konta
+							zarejestruj się</blockquote>
+						<div class="row-fluid"><div class="span12"></div></div>
+						<div class="controls">
+							<div class="offset2 span8">
+								<a class="btn btn-primary" th:href="@{/login/register}">Przejdz do rejestracji</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+
+</html>
