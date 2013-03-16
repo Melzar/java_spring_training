@@ -1,0 +1,7 @@
+.bs-docs-example:after {
+content: none;
+}
+.bs-docs-example
+{
+padding: 5px 19px 14px;
+}
