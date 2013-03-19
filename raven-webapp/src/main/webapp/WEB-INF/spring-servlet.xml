@@ -15,20 +15,6 @@
 	
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 
-	<!-- <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer"> 
-		<property name="templateLoaderPath" value="/view/"/> </bean> -->
-		
-	<!-- <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer"> 
-		<property name="resourceLoaderPath" value="/view/" /> </bean> -->
-
-	<!-- <bean id="viewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver"> 
-		<property name="prefix" value="" /> <property name="suffix" value=".ftl" 
-		/> </bean> -->
-
-	<!-- <bean id="viewResolver" class="org.springframework.web.servlet.view.velocity.VelocityViewResolver"> 
-		<property name="prefix" value="" /> <property name="suffix" value=".vm" /> 
-		</bean> -->
-
 	<bean id="templateResolver"
 		class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
 		<property name="prefix" value="/view/" />
