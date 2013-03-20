@@ -10,17 +10,13 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
 
-	
-	<!-- Annotation dependency injection -->
+
 	<context:component-scan base-package="net.raven.ui.controller" />
 	<context:component-scan base-package="net.raven.core.dao.user" />
 	<mvc:annotation-driven />
 
-	<!-- Scripts and styles mapping -->
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 
-
-	<!-- Hibernate -->
 	<bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="org.postgresql.Driver" />
 		<property name="url" value="jdbc:postgresql://localhost:5432/base" />
@@ -38,7 +34,6 @@
 		</property>
 	</bean>
 
-	<!-- Templating -->
 	<bean id="templateResolver"
 		class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
 		<property name="prefix" value="/view/" />
@@ -53,5 +48,4 @@
 		<property name="templateEngine" ref="templateEngine" />
 		<property name="contentType" value="text/html;charset=UTF-8" />
 	</bean>
-	
 </beans>
