@@ -5,36 +5,54 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
-@Table(name = "User")
+@Table(name = "raven_users")
+@XmlRootElement
 public class User
 {
-	long id;
+	@Id
+	@SequenceGenerator(name = "sequence", sequenceName = "user_id_sequence", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence")
+	@Column(name = "id", insertable = false, updatable = false)
+	private long id;
+
+	@Column(name = "name")
 	String name;
+
+	@Column(name = "surname")
 	String surname;
+
+	@Column(name = "login", insertable = true)
 	String login;
+
+	@Column(name = "password")
 	String password;
+
+	@Column(name = "mail")
 	String mail;
+
+	@Column(name = "logoncount")
 	int logoncount;
+
+	@Column(name = "lastlogin")
 	Date lastlogin;
 
-	@Id
-	@GeneratedValue
-	@Column(name = "id")
+	public User()
+	{
+
+	}
+
 	public long getId()
 	{
 		return id;
 	}
 
-	public void setId(long id)
-	{
-		this.id = id;
-	}
-
-	@Column(name = "name")
 	public String getName()
 	{
 		return name;
@@ -45,7 +63,6 @@ public class User
 		this.name = name;
 	}
 
-	@Column(name = "surname")
 	public String getSurname()
 	{
 		return surname;
@@ -56,7 +73,6 @@ public class User
 		this.surname = surname;
 	}
 
-	@Column(name = "login")
 	public String getLogin()
 	{
 		return login;
@@ -67,7 +83,6 @@ public class User
 		this.login = login;
 	}
 
-	@Column(name = "password")
 	public String getPassword()
 	{
 		return password;
@@ -78,7 +93,6 @@ public class User
 		this.password = password;
 	}
 
-	@Column(name = "mail")
 	public String getMail()
 	{
 		return mail;
@@ -89,7 +103,6 @@ public class User
 		this.mail = mail;
 	}
 
-	@Column(name = "logoncount")
 	public int getLogoncount()
 	{
 		return logoncount;
@@ -100,7 +113,6 @@ public class User
 		this.logoncount = logoncount;
 	}
 
-	@Column(name = "lastlogin")
 	public Date getLastlogin()
 	{
 		return lastlogin;
@@ -109,5 +121,13 @@ public class User
 	public void setLastlogin(Date lastlogin)
 	{
 		this.lastlogin = lastlogin;
+	}
+
+	@Override
+	public String toString()
+	{
+		return "User: Id[" + id + "] Login[" + login + "] Name[" + name
+				+ "] Surname[" + surname + "] Mail[" + mail + "] LogonCount["
+				+ logoncount + "]+ LastLogin[" + lastlogin + "]";
 	}
 }
