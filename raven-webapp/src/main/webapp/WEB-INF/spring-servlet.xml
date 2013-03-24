@@ -15,7 +15,7 @@
 	<context:component-scan base-package="net.raven.ui.controller" />
 	<context:component-scan base-package="net.raven.core.dao.user" />
 	<mvc:annotation-driven />
-
+  
 	<!-- Scripts and styles mapping -->
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 
@@ -32,10 +32,17 @@
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="myDataSource" />
 		<property name="hibernateProperties">
-			<value>
+				<value>
 				hibernate.dialect = org.hibernate.dialect.PostgreSQL81Dialect
+				hibernate.show_sql = true
 			</value>
+			
 		</property>
+		<property name="annotatedClasses">
+       		 <list>
+           		 <value>net.raven.core.entity.User</value>
+        	 </list>
+   		 </property>
 	</bean>
 
 	<!-- Templating -->
