@@ -6,7 +6,7 @@ import net.raven.core.entity.User;
 
 public interface UserManager
 {
-	public void saveUser(User user);
+	public void addUser(User user);
 
 	public List<User> getUserList();
 }
