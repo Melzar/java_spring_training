@@ -6,8 +6,10 @@ import net.raven.core.entity.User;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserManagerImpl implements UserManager
@@ -21,18 +23,24 @@ public class UserManagerImpl implements UserManager
 	}
 
 	@Override
-	public void saveUser(User user)
+	@Transactional
+	public void addUser(User user)
 	{
-		Session session = sessionFactory.getCurrentSession();
-		session.saveOrUpdate(user);
+		Session session = sessionFactory.openSession();
+		Transaction transaction = session.beginTransaction();
+		session.save(user);
+		transaction.commit();
+		session.close();
 	}
 
 	@Override
-	@SuppressWarnings("unchecked")
+	@Transactional
 	public List<User> getUserList()
 	{
-		Session session = sessionFactory.getCurrentSession();
-		return session.createQuery("Select * from User").list();
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		return session.createSQLQuery("SELECT * FROM raven_users")
+				.addEntity(User.class).list();
 	}
 
 }
