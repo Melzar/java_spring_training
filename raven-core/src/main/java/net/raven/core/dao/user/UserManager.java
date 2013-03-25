@@ -8,5 +8,13 @@ public interface UserManager
 {
 	public void addUser(User user);
 
+	public User getUserByMail(String email);
+
+	public User getUsetByLogin(String login);
+
+	public boolean isLoginUnique(String login);
+
+	public boolean isEmailUnique(String email);
+
 	public List<User> getUserList();
 }
